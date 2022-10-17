@@ -1,0 +1,65 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.liquibase:liquibase-gradle-plugin:2.0.4"
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'org.liquibase.gradle' version '2.0.4'
+    id 'java'
+}
+
+group = 'com.citynow'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.17.0'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.1.1'
+    liquibaseRuntime 'org.postgresql:postgresql:42.5.0'
+
+    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+    implementation 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.4'
+    implementation 'org.postgresql:postgresql:42.5.0'
+    implementation 'org.liquibase:liquibase-core:4.17.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+apply plugin: "org.liquibase.gradle"
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+liquibase {
+    activities {
+        main {
+            changeLogFile "./src/main/resources/db/changelog.xml"
+            url "jdbc:postgresql://localhost:5432/resident_management_liquibase"
+            username "postgres"
+            password "12345678"
+        }
+    }
+}
