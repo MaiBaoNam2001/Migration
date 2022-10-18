@@ -69,7 +69,7 @@ $$
         (
             id         TEXT PRIMARY KEY,
             name       TEXT,
-            project_id TEXT unique
+            project_id TEXT UNIQUE
         );
 
         ALTER TABLE parking_area
