@@ -13,4 +13,13 @@
                      relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
         </rollback>
     </changeSet>
+    <changeSet id="202210140352_insert_data" author="nhatphu.sy" labels="202210140352_insert_data">
+        <sqlFile path="changelog/202210140352_insert_data.sql" dbms="postgresql" encoding="UTF-8" endDelimiter=";"
+                 relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
+        <rollback>
+            <sqlFile path="changelog/rollback/202210140352_insert_data.sql" dbms="postgresql" encoding="UTF-8"
+                     endDelimiter=";"
+                     relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
