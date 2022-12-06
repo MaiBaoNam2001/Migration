@@ -1,6 +1,8 @@
 DO
 $$
     BEGIN
+        DELETE FROM apartment_register WHERE id != '';
+        DELETE FROM parking_register WHERE id != '';
         DELETE FROM parking_area WHERE id != '';
         DELETE FROM parking_type WHERE id > 0;
         DELETE FROM apartment WHERE id != '';
