@@ -48,16 +48,20 @@ $$
             email         TEXT UNIQUE,
             address       TEXT,
             type          TEXT,
-            identity_card JSON
+            identity_card TEXT,
+            is_deleted    BOOLEAN
         );
 
         CREATE TABLE IF NOT EXISTS apartment_register
         (
-            customer_id   TEXT,
-            apartment_id  TEXT,
-            is_host       BOOLEAN,
-            register_date DATE,
-            PRIMARY KEY (customer_id, apartment_id)
+            id             TEXT PRIMARY KEY,
+            customer_id    TEXT,
+            apartment_id   TEXT,
+            is_host        BOOLEAN,
+            resident_card  JSONB,
+            motorbike_card JSONB,
+            car_card       JSONB,
+            register_date  DATE
         );
 
         ALTER TABLE apartment_register
@@ -67,13 +71,13 @@ $$
 
         CREATE TABLE IF NOT EXISTS parking_area
         (
-            id         TEXT PRIMARY KEY,
-            name       TEXT,
-            project_id TEXT UNIQUE
+            id          TEXT PRIMARY KEY,
+            name        TEXT,
+            building_id TEXT UNIQUE
         );
 
         ALTER TABLE parking_area
-            ADD FOREIGN KEY (project_id) REFERENCES project (id);
+            ADD FOREIGN KEY (building_id) REFERENCES building (id);
 
         CREATE TABLE IF NOT EXISTS parking_type
         (
@@ -85,6 +89,7 @@ $$
 
         CREATE TABLE IF NOT EXISTS parking_register
         (
+            id              TEXT PRIMARY KEY,
             customer_id     TEXT,
             parking_area_id TEXT,
             license_plate   TEXT UNIQUE,
@@ -92,8 +97,7 @@ $$
             color           TEXT,
             vehicle_type    TEXT,
             register_date   DATE,
-            parking_type_id INT,
-            PRIMARY KEY (customer_id, parking_area_id)
+            parking_type_id INT
         );
 
         ALTER TABLE parking_register
@@ -118,9 +122,9 @@ $$
 
         CREATE TABLE IF NOT EXISTS role_authority
         (
+            id             TEXT PRIMARY KEY,
             role_code      TEXT,
-            authority_code TEXT,
-            PRIMARY KEY (role_code, authority_code)
+            authority_code TEXT
         );
 
         ALTER TABLE role_authority
