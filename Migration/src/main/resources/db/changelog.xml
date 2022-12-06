@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
-    <changeSet id="20221014_init_database" author="baonam.mai" labels="20221014_init_database">
-        <sqlFile path="changelog/202210140343_init_database.sql" dbms="postgresql" encoding="UTF-8" endDelimiter=";"
-                 relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
-        <rollback>
-            <sqlFile path="changelog/rollback/202210140343_init_database.sql" dbms="postgresql" encoding="UTF-8"
-                     endDelimiter=";"
-                     relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
-        </rollback>
-    </changeSet>
-    <changeSet id="202210140352_insert_data" author="nhatphu.sy" labels="202210140352_insert_data">
-        <sqlFile path="changelog/202210140352_insert_data.sql" dbms="postgresql" encoding="UTF-8" endDelimiter=";"
-                 relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
-        <rollback>
-            <sqlFile path="changelog/rollback/202210140352_insert_data.sql" dbms="postgresql" encoding="UTF-8"
-                     endDelimiter=";"
-                     relativeToChangelogFile="true" splitStatements="false" stripComments="true"/>
-        </rollback>
-    </changeSet>
+  <changeSet id="202210211446_init_database" author="baonam.mai"
+    labels="202210211446_init_database">
+    <sqlFile path="sql/202210211446_init_database.sql" dbms="postgresql" encoding="UTF-8"
+      endDelimiter=";"
+      relativeToChangelogFile="true" splitStatements="false" stripComments="true" xml:base=""/>
+    <rollback>
+      <sqlFile path="sql/rollback/202210211446_init_database.sql" dbms="postgresql" encoding="UTF-8"
+        endDelimiter=";"
+        relativeToChangelogFile="true" splitStatements="false" stripComments="true" xml:base=""/>
+    </rollback>
+  </changeSet>
+  <changeSet id="202210211450_insert_data" author="baonam.mai" labels="202210211450_insert_data">
+    <sqlFile path="sql/202210211450_insert_data.sql" dbms="postgresql" encoding="UTF-8"
+      endDelimiter=";"
+      relativeToChangelogFile="true" splitStatements="false" stripComments="true" xml:base=""/>
+    <rollback>
+      <sqlFile path="sql/rollback/202210211450_insert_data.sql" dbms="postgresql" encoding="UTF-8"
+        endDelimiter=";"
+        relativeToChangelogFile="true" splitStatements="false" stripComments="true" xml:base=""/>
+    </rollback>
+  </changeSet>
 </databaseChangeLog>
